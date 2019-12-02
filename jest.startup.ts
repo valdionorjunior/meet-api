@@ -38,4 +38,13 @@ const afterAllTests = () =>{
 beforeAllTests()
 .then(()=>jestcli.run())
 .then(()=>afterAllTests())
-.catch(console.error);
+// .catch(console.error);
+.catch(error =>{
+    console.error(error);
+    process.exit(1);
+});
+
+
+
+
+
