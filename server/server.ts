@@ -10,6 +10,7 @@ import {logger} from '../common/logger';
 
 //repassa o token para o servidor
 import { tokenPerser } from '../security/token.parser';
+import corsMiddleware = require('restify-cors-middleware');
 
 export class Server{
 
@@ -41,21 +42,21 @@ export class Server{
         this.application = restify.createServer(opstions);
 
         //tratamenbto de cors
-        // const corsOptions: corsMiddleware.Options={
-        //   preflightMaxAge: 10, //Optional
-        //   origins: ['*'],
-        //   allowHeaders: ['authorization'],
-        //   exposeHeaders: ['x-custom-headers']
-        // }
+        const corsOptions: corsMiddleware.Options={
+          preflightMaxAge: 10, //Optional
+          origins: ['*'],
+          allowHeaders: ['authorization'],
+          exposeHeaders: ['x-custom-headers']
+        }
 
-        // const cors: corsMiddleware.CorsMiddleware = corsMiddleware(corsOptions);
+        const cors: corsMiddleware.CorsMiddleware = corsMiddleware(corsOptions);
 
-        // this.application.pre(cors.preflight);
-        // this.application.pre(restify.plugins.requestLogger({
-        //   log: Logger
-        // }));
+        this.application.pre(cors.preflight);
+        this.application.pre(restify.plugins.requestLogger({
+          log: logger
+        }));
 
-        // this.application.use(cors.preflight);
+        this.application.use(cors.preflight);
         //fim config cors
         
         //Configurando o metodo logger nas requisições da aplicação
