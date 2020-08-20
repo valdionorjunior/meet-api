@@ -37,7 +37,7 @@
   },
   "private": true,
   "dependencies": {
-    "bcrypt": "2.0.1",
+    "bcrypt": "5.0.0",
     "jsonwebtoken": "8.1.1",
     "mongoose": "^5.7.12",
     "node-pre-gyp": "^0.14.0",
