@@ -41,7 +41,7 @@
     "jsonwebtoken": "8.1.1",
     "mongoose": "^5.7.12",
     "node-pre-gyp": "^0.14.0",
-    "pm2": "^4.2.0",
+    "pm2": "^5.2.0",
     "restify": "6.3.4",
     "restify-cors-middleware": "^1.1.1",
     "restify-errors": "^8.0.1"
